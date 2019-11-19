@@ -18,7 +18,7 @@ export class HttpValidatorInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       tap((response: HttpEvent<any>) => {
-        console.log(req);
+        // console.log(req);
         if (response instanceof HttpResponse) {
           const timeoutRequest = (new Date().getTime() - sendDate);
           this.urlCatcher.successRequests.push({url: response.url, status: response.status, method: req.method, timeout: timeoutRequest});

@@ -12,7 +12,6 @@ export class ExplorerComponent implements OnInit {
   // TODO: remove this when metadata route will be implemented
   @Input() previous: Directory[] = [];
 
-  previousResponses: (FileInterface | Directory)[][] = [];
   // TODO: remove this when metadata route will be implemented
   response: (Directory | FileInterface)[];
 
@@ -45,7 +44,6 @@ export class ExplorerComponent implements OnInit {
   switchDirectory(directory: Directory) {
     if (directory.type === 'dir') {
       this.previous.unshift(this.currentFolder);
-      this.previousResponses.unshift(this.response);
       this.currentFolder = directory;
       this.fetchDirectory();
     }
@@ -54,10 +52,15 @@ export class ExplorerComponent implements OnInit {
   goBack() {
     // TODO: implement 'cd ..' behavior
     // Will need metadata route
-    this.currentFolder = this.previous[0];
-    this.response = this.previousResponses[0];
-    this.previous.shift();
-    this.previousResponses.shift();
+    if (this.currentFolder.path.indexOf('/') === -1) {
+      this.currentFolder = {path: '', dirname: '', basename: 'Root'};  // TODO: metadata route
+    } else {
+      const backPath = this.currentFolder.path.slice(0, this.currentFolder.path.lastIndexOf('/'));
+      console.log(`${this.currentFolder.path} => ${backPath}`);
+      this.currentFolder = this.previous[0]; // TODO: metadata route
+      this.previous.shift();
+    }
+    this.fetchDirectory();
   }
 
   clearSelection() {
