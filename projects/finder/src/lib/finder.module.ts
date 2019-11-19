@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExplorerComponent} from './components/folder-modal/explorer.component';
+import { ExplorerComponent} from './components/explorer/explorer.component';
 import { ElementComponent} from './components/element/element.component';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
-import {DriveApiModule, FilesHttpService} from '@mathrix-education/drive-angular-api';
+import {FilesHttpService} from '@mathrix-education/drive-angular-api';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -21,12 +23,13 @@ import {DriveApiModule, FilesHttpService} from '@mathrix-education/drive-angular
     MatButtonModule,
     MatTooltipModule,
     MatCheckboxModule,
-    DriveApiModule
+    FlexLayoutModule
   ],
   exports: [
     ExplorerComponent
   ],
   providers: [
+    HttpClient,
     FilesHttpService
   ]
 })

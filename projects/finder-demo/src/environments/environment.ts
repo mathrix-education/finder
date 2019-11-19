@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: 'https://dev.api.mathrixdrive.fr',
+  cdn: 'https://dev.cdn.mathrixdrive.fr',
+  authToken: 'mathrix-drive-token',
+  userIdToken: 'mathrix-drive-user-id',
+  xAsUserToken: 'X-As-User-Id',
 };
 
 /*
