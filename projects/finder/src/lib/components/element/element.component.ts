@@ -7,7 +7,7 @@ import {Directory, FileInterface} from '@mathrix-education/drive-angular-api';
   styleUrls: ['./element.component.scss']
 })
 export class ElementComponent {
-  @Input() element: FileInterface | Directory;
+  @Input() element: string;
 
   constructor() {
   }

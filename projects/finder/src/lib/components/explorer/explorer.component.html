@@ -1,77 +1,11 @@
 <mat-card>
-  <mat-toolbar>
-    <button *ngIf="currentFolder.path" mat-icon-button
-            (click)="goBack()"
-            matTooltip="Remonter dans l'arborescence">
-      <mat-icon>
-        arrow_back_ios
-      </mat-icon>
-    </button>
-
-    <div fxFlex="grow" class="mat-h1 pt-2 text-center">
-      {{currentFolder.basename}}
-    </div>
-
-    <button mat-icon-button
-            matTooltip="Annuler et fermer la fenêtre"
-            (click)="closeModal()">
-      <mat-icon>
-        close
-      </mat-icon>
-    </button>
-  </mat-toolbar>
+  <div class="mat-h1 pt-2 text-center">
+    {{title}}
+  </div>
 
   <div class="folders">
-    <div *ngFor="let element of response"
-         [class.selected]="selectedItems.indexOf(element) !== -1"
-         class="pl-2"
-         fxLayoutAlign="start center">
-
-      <mat-checkbox [disabled]="destinationMode || element.type === 'dir'"
-                    [checked]="selectedItems.indexOf(element) !== -1"
-                    (change)="addOrRemoveFromSelection($event, element)">
-      </mat-checkbox>
-      <finder-element [element]="element"
-                  (click)="switchDirectory(element)">
-      </finder-element>
-
-    </div>
-  </div>
-
-  <div class="selection-bar" fxLayoutAlign="space-between center">
-    <div *ngIf="!destinationMode">
-      {{selectedItems.length !== 0 ? 'A déplacer : ' + selectedItems[0].basename :
-        'Sélectionnez un dossier ou un fichier'}}
-    </div>
-
-    <div *ngIf="destinationMode">
-      Déplacer vers {{currentFolder.basename}}
-    </div>
-
-    <div>
-      <button mat-icon-button
-              [matTooltip]="'Déselectionner'"
-              [disabled]="selectedItems.length === 0"
-              (click)="clearSelection()">
-        <mat-icon>close</mat-icon>
-      </button>
-
-      <button *ngIf="!destinationMode"
-              mat-raised-button
-              [disabled]="selectedItems.length === 0"
-              (click)="switchToDestinationSelection()"
-              matTooltip="Valider le choix">
-        Valider
-      </button>
-
-      <button *ngIf="destinationMode"
-              mat-raised-button
-              (click)="moveItems()">
-        Déplacer ici
-      </button>
-    </div>
-
+    <finder-element *ngFor="let element of elements"
+                    [element]="element">
+    </finder-element>
   </div>
 </mat-card>
-
-<button (click)="logObjects(currentFolder)">Log currentFolder</button>

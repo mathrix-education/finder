@@ -8,6 +8,13 @@ import {UrlCatcherService} from './services/url-catcher.service';
 })
 export class AppComponent {
   title = 'finder-demo';
+  mockFolder: string[] = [
+    'Element 1',
+    'Element 2',
+    'Element 3',
+    'Element 4',
+    'Element 5'
+  ];
 
   constructor(public urlCatcher: UrlCatcherService) {
     this.urlCatcher.bearerToken = localStorage.getItem('mathrix-drive-token');
