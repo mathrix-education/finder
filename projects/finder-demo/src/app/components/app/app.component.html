@@ -1,0 +1,12 @@
+<h1>Finder demo</h1>
+
+<div class="flex-items">
+  <mat-card [routerLink]="'array'">
+    Simple array as input, with console logging the click event responses (output)
+  </mat-card>
+  <mat-card [routerLink]="'cdn'">
+    CDN viewer, connected to dev.api.mathrixdrive.fr
+  </mat-card>
+</div>
+
+<router-outlet></router-outlet>

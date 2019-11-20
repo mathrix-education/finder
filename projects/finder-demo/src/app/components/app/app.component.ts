@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {UrlCatcherService} from './services/url-catcher.service';
-import {$e} from 'codelyzer/angular/styles/chars';
+import {UrlCatcherService} from '../../services/url-catcher.service';
 
 @Component({
   selector: 'app-root',

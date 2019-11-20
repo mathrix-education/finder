@@ -1,13 +1,13 @@
 @import "~@mathrix-education/material-css/mixins";
 
 mat-card {
-  @include padding(0);
   width: 350px;
+  padding: 0;
 }
 
 .selection-bar {
-  @include padding(1);
   background-color: #F5F5F5;
+  padding: 8px;
 }
 
 .folders {
@@ -20,8 +20,8 @@ mat-card {
 }
 
 .title {
-  @include margin(0);
-  @include padding-y(1);
   background-color: #EEEEEE;
+  margin: 0;
+  padding: 8px 0;
   text-align: center;
 }
