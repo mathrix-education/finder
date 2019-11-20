@@ -13,9 +13,7 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule,
     MatCardModule,
-    MatCheckboxModule,
     MatToolbarModule,
   ],
   exports: [

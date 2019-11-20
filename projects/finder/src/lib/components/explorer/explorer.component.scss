@@ -2,7 +2,7 @@
 
 mat-card {
   @include padding(0);
-  width: 400px;
+  width: 350px;
 }
 
 .selection-bar {
@@ -17,4 +17,11 @@ mat-card {
 
 .selected {
   background-color: #F0F0F0;
+}
+
+.title {
+  @include margin(0);
+  @include padding-y(1);
+  background-color: #EEEEEE;
+  text-align: center;
 }

@@ -2,7 +2,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {UrlCatcherService} from '../services/url-catcher.service';
-import {API_CONFIG} from '../../../../finder/src/lib/api.config';
+import {API_CONFIG} from '../api.config';
 
 @Injectable({
   providedIn: 'root'

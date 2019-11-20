@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FinderModule} from '../../../finder/src/lib/finder.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {API_CONFIG} from '../../../finder/src/lib/api.config';
+import {API_CONFIG} from './api.config';
 import {environment} from '../environments/environment';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import {HttpValidatorInterceptor} from './interceptors/http-validator.interceptor';

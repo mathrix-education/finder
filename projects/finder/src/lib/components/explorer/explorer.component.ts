@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'finder-explorer',
@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 export class ExplorerComponent {
   @Input() title: string;
   @Input() elements: string[];
-
+  @Output() clicked = new EventEmitter<string>();
   constructor() {
   }
 }

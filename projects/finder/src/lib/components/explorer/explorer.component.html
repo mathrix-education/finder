@@ -1,11 +1,12 @@
 <mat-card>
-  <div class="mat-h1 pt-2 text-center">
+  <div class="mat-h1 title">
     {{title}}
   </div>
 
   <div class="folders">
     <finder-element *ngFor="let element of elements"
-                    [element]="element">
+                    [element]="element"
+                    (click)="clicked.emit(element)">
     </finder-element>
   </div>
 </mat-card>

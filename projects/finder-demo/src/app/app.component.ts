@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {UrlCatcherService} from './services/url-catcher.service';
+import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,24 @@ export class AppComponent {
     'Element 2',
     'Element 3',
     'Element 4',
+    'Element 5',
+    'Element 1',
+    'Element 2',
+    'Element 3',
+    'Element 4',
+    'Element 5',
+    'Element 1',
+    'Element 2',
+    'Element 3',
+    'Element 4',
     'Element 5'
   ];
 
   constructor(public urlCatcher: UrlCatcherService) {
     this.urlCatcher.bearerToken = localStorage.getItem('mathrix-drive-token');
+  }
+
+  logEvent($event: string) {
+    console.log($event);
   }
 }
