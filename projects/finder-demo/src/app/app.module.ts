@@ -22,10 +22,6 @@ const appRoutes: Routes = [
   {
     path: 'cdn',
     component: CdnViewerComponent
-  },
-  {
-    path: '**',
-    component: AppComponent
   }
 ];
 

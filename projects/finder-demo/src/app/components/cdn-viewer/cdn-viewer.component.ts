@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Directory, FileInterface, FilesHttpService} from '@mathrix-education/drive-angular-api';
 
 @Component({
@@ -11,43 +11,47 @@ export class CdnViewerComponent {
   response: (Directory | FileInterface)[];
   responseBaseNames: string[];
 
-  // this is to 'fetch' data from the route
-  anyTemp: any;
-
   constructor(private filesHttp: FilesHttpService) {
-    this.fetchDirectory();
+    this.fetchDirectory(this.currentFolder.path);
   }
 
-  fetchDirectory() {
-    this.filesHttp.list(this.currentFolder.path).subscribe(data => {
-      this.anyTemp = data;
-      this.response = this.anyTemp.data;
+  /**
+   * This functions fetches the new directory data and metadata
+   * @param path: path of the directory you want to see.
+   */
+  fetchDirectory(path: string) {
+    let anyTemp: any;
+
+    this.filesHttp.list(path).subscribe(data => {
+      anyTemp = data;
+      this.response = anyTemp.data;
       this.responseBaseNames = this.response.map(obj => obj.basename);
+      if (path !== '') {
+        this.responseBaseNames.unshift('..');
+      }
     });
+    if (path !== '') {
+      this.filesHttp.metadata(path).subscribe(data => {
+        anyTemp = data;
+        this.currentFolder = anyTemp.data;
+      });
+    }
   }
 
   switchDirectory(element: string) {
-    // const directory = this.response.find(obj => obj.basename === element);
-    // if (directory.type === 'dir') {
-    //   this.currentFolder = directory;
-    //   this.fetchDirectory();
-    // }
-    console.log('SWITCHING TO ' + element);
-  }
-
-  goBack() {
-    // TODO: implement 'cd ..' behavior
-    // Will need metadata route
-    if (this.currentFolder.path.indexOf('/') === -1) {
-      this.currentFolder = {path: '', dirname: '', basename: 'Root'};  // TODO: metadata route
+    if (element === '..') {
+      if (this.currentFolder.path.indexOf('/') === -1) {
+        this.currentFolder = {path: '', dirname: '', basename: 'Root'};
+        this.fetchDirectory(this.currentFolder.path);
+      } else {
+        this.fetchDirectory(this.currentFolder.path.slice(0, this.currentFolder.path.lastIndexOf('/')));
+      }
     } else {
-      const backPath = this.currentFolder.path.slice(0, this.currentFolder.path.lastIndexOf('/'));
-      console.log(`${this.currentFolder.path} => ${backPath}`);
-    }
-    this.fetchDirectory();
-  }
+      const directory = this.response.find(obj => obj.basename === element) as Directory;
 
-  logObjects(item: any) {
-    console.log(item);
+      if (directory.type === 'dir') {
+        this.fetchDirectory(directory.path);
+      }
+    }
   }
 }
