@@ -1,5 +1,3 @@
-@import "~@mathrix-education/material-css/mixins";
-
 mat-card {
   width: 350px;
   padding: 0;
@@ -11,6 +9,7 @@ mat-card {
 }
 
 .folders {
+  padding: 8px 0;
   height: 350px;
   overflow-y: auto;
 }
