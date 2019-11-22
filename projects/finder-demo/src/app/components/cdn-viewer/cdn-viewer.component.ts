@@ -10,6 +10,7 @@ export class CdnViewerComponent {
   currentFolder: Directory = {path: '', dirname: '', basename: 'Root'};
   response: (Directory | FileInterface)[];
   responseBaseNames: string[];
+  selectedElements: string[] = [];
 
   constructor(private filesHttp: FilesHttpService) {
     this.fetchDirectory(this.currentFolder.path);

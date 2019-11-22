@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {ExplorerComponent} from './components/explorer/explorer.component';
 import {ElementComponent} from './components/element/element.component';
 import {MatCardModule, MatCheckboxModule, MatToolbarModule} from '@angular/material';
-import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -15,6 +14,7 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     MatCardModule,
     MatToolbarModule,
+    MatCheckboxModule,
   ],
   exports: [
     ExplorerComponent

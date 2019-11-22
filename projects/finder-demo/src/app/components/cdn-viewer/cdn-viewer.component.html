@@ -1,4 +1,5 @@
 <finder-explorer [title]="currentFolder.basename"
                  [elements]="responseBaseNames"
-                 (clicked)="switchDirectory($event)">
+                 (clicked)="switchDirectory($event)"
+                 [(selected)]="selectedElements">
 </finder-explorer>

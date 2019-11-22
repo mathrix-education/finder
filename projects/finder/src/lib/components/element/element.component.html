@@ -1,3 +1,9 @@
-<div>
-  {{element}}
+<div class="element" [class.selected]="selectedElement">
+  <mat-checkbox *ngIf="element !== '..'"
+                (change)="selectedElementChange.emit($event.checked)"
+                [checked]="selectedElement">
+  </mat-checkbox>
+  <div class="text" (click)="navigate.emit(element)">
+    {{element}}
+  </div>
 </div>

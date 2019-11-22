@@ -6,7 +6,9 @@
   <div class="folders">
     <finder-element *ngFor="let element of elements"
                     [element]="element"
-                    (click)="clicked.emit(element)">
+                    [selectedElement]="selected.indexOf(element) !== -1"
+                    (navigate)="clicked.emit(element)"
+                    (selectedElementChange)="selectionChange(element, $event)">
     </finder-element>
   </div>
 </mat-card>
